@@ -1,0 +1,15 @@
+Write a shell script for a system monitoring tool. The objective is to continuously monitor all processes on a Unix/Linux system. If any process exceeds 60% CPU usage, the script should log information about those processes into a file(while writing the information about the process to a file it should also contain current date time), and simultaneously send an email notification to a specified email address
+
+
+
+!/bin/bash
+top -b -n 1 | awk -F " " 'NR>7' > usage
+while read line
+do
+        c=` echo "$line" | awk -F " " '{print $9}' | awk -F "." '{print $1}'`
+        if [ $c -gt 1 ]
+        then
+                echo "$line" | awk -F " " '{print $NF}' && date >> pr
+        fi
+done < usage
+cat pr | mail -s "Usage alert" "ashishhmsagar@gmail.com"

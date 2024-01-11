@@ -1,0 +1,16 @@
+Factorial of given set of numbers
+
+
+#!/bin/bash
+a="1 2 3 4 5"
+for i in $a
+do
+        fact=1
+while [ $i -ge 1 ]
+do
+        fact=`expr $i \* $fact`
+        i=`expr $i - 1`
+done
+echo "$fact"
+done
+~        

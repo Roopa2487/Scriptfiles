@@ -1,0 +1,20 @@
+Palindrome
+
+#!/bin/bash
+echo "Enter the string"
+read string
+count=` expr length $string`
+count2=`echo "$string"`
+while [ $count -ge 1 ]
+do
+        string1+=` echo "$string" | awk -F "" '{print $NF}'`
+        string=` echo "$string" | sed 's/.$//g'`
+        count=`expr $count - 1`
+done
+echo "$string1"
+if [ $count2 == $string1 ]
+then
+        echo "$count2 is pallindrome"
+else
+        echo "$count2 is not a pallindrome"
+fi

@@ -1,0 +1,23 @@
+Write a shell script, you need to prompt file path from the user, if the file exists then it should go to next prompt. in next prompt it should ask for word from same file. if the file is not exist I should exit, same for word as well
+
+
+
+
+#!/bin/bash
+echo "Enter the file path"
+read path
+if [ -f $path ]
+then
+        echo "enter the word to search in the same file"
+        read word
+        grep -i "$word" $path
+        if [ $? -eq 0 ]
+        then
+                echo "Word exist in file"
+        else
+                echo "Word doesn't exist in file"
+        fi
+        else
+        echo "File dosen't exist"
+fi                
+~          
