@@ -1,9 +1,0 @@
-I have an apache error log file. Whenever I am getting word "error" in error.log file. I should receive an email. How to achieve this?
-
-
-#!/bin/bash
-grep -i -n "error" /home/ubuntu/assign/file.log > check
-if [ $? -eq 0 ]
-then
-        cat check | mail -s "Error" "ashishhmsagar@gmail.com"
-fi
